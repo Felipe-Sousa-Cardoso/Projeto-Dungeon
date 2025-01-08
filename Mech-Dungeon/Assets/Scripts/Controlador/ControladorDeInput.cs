@@ -5,5 +5,5 @@ using UnityEngine;
 public class ControladorDeInput : MonoBehaviour
 {
     public static ControladorDeInput instance;
-    [SerializedFiel]
+    [SerializeField] int sim;
 }
