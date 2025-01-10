@@ -5,8 +5,10 @@ using UnityEngine.InputSystem;
 
 public class Jogador : MonoBehaviour
 {
+    [SerializeField] int id;
+    [SerializeField] UsoDash DashAtual;
     Vector3 MousePos;
-    float VelocidadeDeMovimento = 200;
+    [SerializeField] float VelocidadeDeMovimento = 200;
 
     Rigidbody2D rb;
     private void Awake()
@@ -29,8 +31,7 @@ public class Jogador : MonoBehaviour
         GetMousePos(); //Pega a posição do mouse em referencia a posção do mouse
         if (ControladorDeInput.GetDashInput())
         {
-            print("Dash");
-            VelocidadeDeMovimento *=3;
+            StartCoroutine(DashAtual.usodash(VelocidadeDeMovimento));
         }
 
 
