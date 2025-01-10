@@ -1,10 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Jogador : MonoBehaviour
 {
-    // Start is called before the first frame update
+    Vector3 MousePos;
+    float VelocidadeDeMovimento = 200;
+
+    Rigidbody2D rb;
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();   
+    }
     void Start()
     {
         
@@ -13,6 +21,24 @@ public class Jogador : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        transform.position += new Vector3(ControladorDeInput.GetMoveInput().x,ControladorDeInput.GetMoveInput().y)*10*Time.fixedDeltaTime;
+        rb.velocity = new Vector3(ControladorDeInput.GetMoveInput().x,ControladorDeInput.GetMoveInput().y)*Time.deltaTime*VelocidadeDeMovimento;  //Movimentação
+
+    }
+    private void Update()
+    {
+        GetMousePos(); //Pega a posição do mouse em referencia a posção do mouse
+        if (ControladorDeInput.GetDashInput())
+        {
+            print("Dash");
+            VelocidadeDeMovimento *=3;
+        }
+
+
+    }
+
+    void GetMousePos()
+    {
+        MousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition); 
+        transform.right = new Vector2(MousePos.x - transform.position.x, MousePos.y - transform.position.y);
     }
 }
