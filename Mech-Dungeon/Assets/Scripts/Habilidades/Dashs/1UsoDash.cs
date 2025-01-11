@@ -4,5 +4,5 @@ using UnityEngine;
 
 public abstract class UsoDash : MonoBehaviour
 {
-    public abstract IEnumerator usodash(float VelMov);
+    public abstract IEnumerator usodash(Jogador jog);
 }

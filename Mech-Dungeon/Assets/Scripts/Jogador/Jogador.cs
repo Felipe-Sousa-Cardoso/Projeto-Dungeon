@@ -5,10 +5,11 @@ using UnityEngine.InputSystem;
 
 public class Jogador : MonoBehaviour
 {
-    [SerializeField] int id;
     [SerializeField] UsoDash DashAtual;
     Vector3 MousePos;
-    [SerializeField] float VelocidadeDeMovimento = 200;
+    [SerializeField] bool isdashing;
+
+    float VelocidadeDeMovimento = 200;
 
     Rigidbody2D rb;
     private void Awake()
@@ -23,7 +24,10 @@ public class Jogador : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        rb.velocity = new Vector3(ControladorDeInput.GetMoveInput().x,ControladorDeInput.GetMoveInput().y)*Time.deltaTime*VelocidadeDeMovimento;  //Movimentação
+        
+        rb.velocity = new Vector3(ControladorDeInput.GetMoveInput().x, ControladorDeInput.GetMoveInput().y) * Time.deltaTime * VelocidadeDeMovimento;  //Movimentação
+       
+        
 
     }
     private void Update()
@@ -31,7 +35,9 @@ public class Jogador : MonoBehaviour
         GetMousePos(); //Pega a posição do mouse em referencia a posção do mouse
         if (ControladorDeInput.GetDashInput())
         {
-            StartCoroutine(DashAtual.usodash(VelocidadeDeMovimento));
+            
+            StartCoroutine(DashAtual.usodash(this));
+            
         }
 
 
@@ -42,4 +48,17 @@ public class Jogador : MonoBehaviour
         MousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition); 
         transform.right = new Vector2(MousePos.x - transform.position.x, MousePos.y - transform.position.y);
     }
+    #region Métodos de acesso
+    public float VelLMov
+    {
+        get { return VelocidadeDeMovimento; }
+        set { VelocidadeDeMovimento=value; }
+    }
+    public bool Isdashing
+    {
+        get { return isdashing; }
+        set { isdashing = value; }
+    }
+    #endregion
+
 }
