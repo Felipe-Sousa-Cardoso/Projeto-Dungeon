@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Jogador : MonoBehaviour
+public class JogadorMovimento : MonoBehaviour
 {
     [SerializeField] UsoDash DashAtual;
     Vector3 MousePos;
     [SerializeField] bool isdashing;
+    [SerializeField] Vector3 direção;
 
     float VelocidadeDeMovimento = 200;
 
@@ -24,20 +25,19 @@ public class Jogador : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        
-        rb.velocity = new Vector3(ControladorDeInput.GetMoveInput().x, ControladorDeInput.GetMoveInput().y) * Time.deltaTime * VelocidadeDeMovimento;  //Movimentação
-       
-        
-
+        if (!isdashing)
+        {
+            direção = new Vector3(ControladorDeInput.GetMoveInput().x, ControladorDeInput.GetMoveInput().y);
+        }
+        rb.velocity = direção*Time.deltaTime * VelocidadeDeMovimento;  
+ 
     }
     private void Update()
     {
-        GetMousePos(); //Pega a posição do mouse em referencia a posção do mouse
+        GetMousePos(); //Pega a posição do mouse em referencia a posição atual
         if (ControladorDeInput.GetDashInput())
-        {
-            
-            StartCoroutine(DashAtual.usodash(this));
-            
+        {  
+            StartCoroutine(DashAtual.usodash(this));        
         }
 
 
@@ -53,6 +53,11 @@ public class Jogador : MonoBehaviour
     {
         get { return VelocidadeDeMovimento; }
         set { VelocidadeDeMovimento=value; }
+    }
+    public UsoDash GetSetDash
+    {
+        get { return DashAtual; }
+        set { DashAtual = value; }
     }
     public bool Isdashing
     {
