@@ -5,10 +5,12 @@ using UnityEngine.InputSystem;
 
 public class JogadorMovimento : MonoBehaviour
 {
-    [SerializeField] UsoDash DashAtual;
+    [SerializeField] UsoDash DashAtual; //É o objeto que contem o script do Dash
+    [SerializeField] DadosDoDash DadosDash; //Armazena os valores do Dash, é usado para controle de cargas e interface
     Vector3 MousePos;
-    [SerializeField] bool isdashing;
+    [SerializeField] bool isdashing; 
     [SerializeField] Vector3 direção;
+    bool CdDash; //Controla a corrotina do CD do dash
 
     float VelocidadeDeMovimento = 200;
 
@@ -19,7 +21,7 @@ public class JogadorMovimento : MonoBehaviour
     }
     void Start()
     {
-        
+        UpdateDash();
     }
 
     // Update is called once per frame
@@ -37,12 +39,31 @@ public class JogadorMovimento : MonoBehaviour
         GetMousePos(); //Pega a posição do mouse em referencia a posição atual
         if (ControladorDeInput.GetDashInput())
         {  
-            StartCoroutine(DashAtual.usodash(this));        
+            if (DadosDash.CargasDoDash>=1)
+            {
+                StartCoroutine(DashAtual.usodash(this));           
+            }               
         }
+        if (CdDash&&DadosDash.CargasDoDash<DashAtual.Valores.Cargas) 
+        {
+            StartCoroutine(CDdoDash());
+        }
+        
 
 
     }
-
+    void UpdateDash()
+    {
+        DadosDash.CDdoDash = DashAtual.Valores.CD;
+        DadosDash.CargasDoDash = DashAtual.Valores.Cargas;
+    }
+    IEnumerator CDdoDash()
+    {
+        CdDash = true;
+        yield return new WaitForSeconds(DadosDash.CDdoDash);
+        DadosDash.CargasDoDash++;
+        CdDash = false;
+    }
     void GetMousePos()
     {
         MousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition); 
