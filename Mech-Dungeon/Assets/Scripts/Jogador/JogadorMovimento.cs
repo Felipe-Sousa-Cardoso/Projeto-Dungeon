@@ -10,8 +10,7 @@ public class JogadorMovimento : MonoBehaviour
     Vector3 MousePos;
     [SerializeField] bool isdashing; 
     [SerializeField] Vector3 direção;
-    bool CdDash; //Controla a corrotina do CD do dash
-
+    [SerializeField] // Usado para ser decressido para fazer o controle de coll down do Dash
     float VelocidadeDeMovimento = 200;
 
     Rigidbody2D rb;
@@ -22,11 +21,13 @@ public class JogadorMovimento : MonoBehaviour
     void Start()
     {
         UpdateDash();
+        DadosDash.ContadorCDdash = DadosDash.CDdoDash;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        
         if (!isdashing)
         {
             direção = new Vector3(ControladorDeInput.GetMoveInput().x, ControladorDeInput.GetMoveInput().y);
@@ -35,40 +36,49 @@ public class JogadorMovimento : MonoBehaviour
  
     }
     private void Update()
-    {
-        GetMousePos(); //Pega a posição do mouse em referencia a posição atual
+    {    
+        #region Input
         if (ControladorDeInput.GetDashInput())
         {  
             if (DadosDash.CargasDoDash>=1)
             {
-                StartCoroutine(DashAtual.usodash(this));           
+                StartCoroutine(DashAtual.usodash(this));     
+                DadosDash.CargasDoDash --;
             }               
         }
-        if (CdDash&&DadosDash.CargasDoDash<DashAtual.Valores.Cargas) 
+        #endregion
+        ControleCDDash();
+        GetMousePos();
+        if (Input.GetKeyDown(KeyCode.G))
         {
-            StartCoroutine(CDdoDash());
+            UpdateDash();
         }
-        
-
 
     }
-    void UpdateDash()
+    void ControleCDDash() //Faz as verificações do Cd e da quantidade de cargas
+    {
+        if (DadosDash.CargasDoDash < DashAtual.Valores.Cargas)
+        {
+            DadosDash.ContadorCDdash -= Time.deltaTime;
+        }
+        if (DadosDash.ContadorCDdash <= 0)
+        {
+            DadosDash.ContadorCDdash = DadosDash.CDdoDash;
+            DadosDash.CargasDoDash++;
+        }
+
+        
+    }
+    void UpdateDash() //Trás os valores do script de cada dash para o objeto scriptavel
     {
         DadosDash.CDdoDash = DashAtual.Valores.CD;
         DadosDash.CargasDoDash = DashAtual.Valores.Cargas;
-    }
-    IEnumerator CDdoDash()
-    {
-        CdDash = true;
-        yield return new WaitForSeconds(DadosDash.CDdoDash);
-        DadosDash.CargasDoDash++;
-        CdDash = false;
     }
     void GetMousePos()
     {
         MousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition); 
         transform.right = new Vector2(MousePos.x - transform.position.x, MousePos.y - transform.position.y);
-    }
+    } //Pega a posição do mouse em referencia a posição atual
     #region Métodos de acesso
     public float VelLMov
     {
