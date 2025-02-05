@@ -6,20 +6,23 @@ using UnityEngine.InputSystem;
 public class JogadorMovimento : MonoBehaviour
 {
     [SerializeField] UsoDash DashAtual; //É o objeto que contem o script do Dash
-    [SerializeField] DadosDoDash DadosDash; //Armazena os valores do Dash, é usado para controle de cargas e interface
+    [SerializeField] DadosDoDash DadosDash; //Armazena os valores do Dash, é usado para controle de cargas e interface, é um objeto Scriptavel
     Vector3 MousePos;
     [SerializeField] bool isdashing; 
     [SerializeField] Vector3 direção;
     [SerializeField] // Usado para ser decressido para fazer o controle de coll down do Dash
     float VelocidadeDeMovimento = 200;
 
+    TrailRenderer TrailRenderer;
+
     Rigidbody2D rb;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();   
+        TrailRenderer = rb.GetComponent<TrailRenderer>();
     }
     void Start()
-    {
+    {       
         UpdateDash();
         DadosDash.ContadorCDdash = DadosDash.CDdoDash;
     }
@@ -27,7 +30,7 @@ public class JogadorMovimento : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        
+        TrailRenderer.emitting = isdashing; 
         if (!isdashing)
         {
             direção = new Vector3(ControladorDeInput.GetMoveInput().x, ControladorDeInput.GetMoveInput().y);
@@ -36,7 +39,8 @@ public class JogadorMovimento : MonoBehaviour
  
     }
     private void Update()
-    {    
+    { 
+        //Todos os inputs e seus efeitos
         #region Input
         if (ControladorDeInput.GetDashInput())
         {  

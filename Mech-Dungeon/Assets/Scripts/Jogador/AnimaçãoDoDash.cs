@@ -14,6 +14,7 @@ public class AnimaçãoDoDash : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         spriteRenderer.sprite = GetComponentInParent<JogadorMovimento>().GetSetDash.Valores.sprite;
     }
 }
