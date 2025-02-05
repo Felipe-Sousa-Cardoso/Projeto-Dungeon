@@ -801,6 +801,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 955270074}
   m_CullTransparentMesh: 1
+--- !u!114 &1090009611 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 593036379930862109, guid: 1687a1d4ea1ceae48886f534a1d7fa31, type: 3}
+  m_PrefabInstance: {fileID: 6964853121411834610}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03882d819abd3af4c965b82fe282ffe9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1101479114
 GameObject:
   m_ObjectHideFlags: 0
@@ -960,17 +971,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1113830471 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 859503588735258271, guid: c02334034717a8f45bb98e16997a5a88, type: 3}
-  m_PrefabInstance: {fileID: 2714247636712717986}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 870ca05e190caa145b9c392dc5ce83a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1134873829
 GameObject:
   m_ObjectHideFlags: 0
@@ -1396,7 +1396,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d70ad69ca4ced7941881b19e2301b1c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DashAtual: {fileID: 1113830471}
+  DashAtual: {fileID: 1090009611}
   DadosDash: {fileID: 11400000, guid: d358b109f263da941936f280e12113f4, type: 2}
   isdashing: 0
   "dire\xE7\xE3o": {x: 0, y: 0, z: 0}

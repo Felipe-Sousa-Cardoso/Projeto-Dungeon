@@ -3,12 +3,19 @@ using UnityEngine;
 
 public class DashBasico : UsoDash
 {
-    public override IEnumerator usodash(JogadorMovimento jog)
+    private void Start()
     {
-        jog.Isdashing = true;
-        jog.VelLMov *= 3;
-        yield return new WaitForSeconds(0.2f);
-        jog.VelLMov /= 3;
-        jog.Isdashing = false;
+        potencia = 3;
+        duração = 0.2f;
+        switch (Valores.QualidadeDeManufatura)
+        {
+            case 1: break;
+            case 2: break;
+        }
+        switch (Valores.AtributoEspecial)
+        {
+            case 2: potencia += 2; break;
+        }
     }
+    
 }

@@ -3,13 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DashAvançado : UsoDash
-{
-    public override IEnumerator usodash(JogadorMovimento jog)
+{   private void Start()
     {
-        jog.Isdashing = true;
-        jog.VelLMov *= 6;
-        yield return new WaitForSeconds(0.1f);
-        jog.VelLMov /= 6;
-        jog.Isdashing = false;
+        potencia = 6;
+        duração = 0.1f;
+
+        switch (Valores.QualidadeDeManufatura)
+        {
+            case 1: potencia += 2; break;
+            case 2: Valores.CD -= 1; break;
+        }
+        switch (Valores.AtributoEspecial)
+        {
+            case 1: Valores.CD -=2; break;
+            case 2: potencia += 1; break;
+            case 3: Valores.Cargas += 1; break;
+        }
     }
 }

@@ -30,7 +30,7 @@ public class JogadorMovimento : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        TrailRenderer.emitting = isdashing; 
+        TrailRenderer.emitting = isdashing; //Controla a emissão do rastro baseado se o personagem está fazendo o dash
         if (!isdashing)
         {
             direção = new Vector3(ControladorDeInput.GetMoveInput().x, ControladorDeInput.GetMoveInput().y);

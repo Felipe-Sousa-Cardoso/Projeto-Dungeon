@@ -3,13 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DashRapido : UsoDash
-{
-    public override IEnumerator usodash(JogadorMovimento jog)
+{   private void Start()
     {
-        jog.Isdashing = true;
-        jog.VelLMov *= 2;
-        yield return new WaitForSeconds(0.2f);
-        jog.VelLMov /= 2;
-        jog.Isdashing = false;
+        potencia = 2;
+        duração = 0.2f;
+        switch (Valores.QualidadeDeManufatura)
+        {
+            case 1: break;
+            case 2: break;
+        }
+        switch (Valores.AtributoEspecial)
+        {
+            case 2: potencia +=1; break;
+        }
     }
 }
