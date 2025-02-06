@@ -5,8 +5,8 @@ using UnityEngine.InputSystem;
 
 public class JogadorMovimento : MonoBehaviour
 {
-    [SerializeField] UsoDash DashAtual; //É o objeto que contem o script do Dash
-    [SerializeField] DadosDoDash DadosDash; //Armazena os valores do Dash, é usado para controle de cargas e interface, é um objeto Scriptavel
+    [SerializeField] public UsoDash DashAtual; //É o objeto que contem o script do Dash
+    [SerializeField] public DadosDoDash DadosDash; //Armazena os valores do Dash, é usado para controle de cargas e interface, é um objeto Scriptavel
     Vector3 MousePos;
     [SerializeField] bool isdashing; 
     [SerializeField] Vector3 direção;
@@ -55,6 +55,7 @@ public class JogadorMovimento : MonoBehaviour
         GetMousePos();
         if (Input.GetKeyDown(KeyCode.G))
         {
+
             UpdateDash();
         }
 
@@ -75,8 +76,8 @@ public class JogadorMovimento : MonoBehaviour
     }
     void UpdateDash() //Trás os valores do script de cada dash para o objeto scriptavel
     {
-        DadosDash.CDdoDash = DashAtual.Valores.CD;
-        DadosDash.CargasDoDash = DashAtual.Valores.Cargas;
+        DashAtual.updateDash(this); 
+        
     }
     void GetMousePos()
     {

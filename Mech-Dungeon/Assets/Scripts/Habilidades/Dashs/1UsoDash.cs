@@ -15,4 +15,5 @@ public class UsoDash : MonoBehaviour
         jog.VelLMov /= potencia;
         jog.Isdashing = false;
     }
+    public virtual void updateDash(JogadorMovimento jog) { }
 }
