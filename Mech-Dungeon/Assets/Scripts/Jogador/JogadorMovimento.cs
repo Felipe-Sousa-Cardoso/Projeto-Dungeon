@@ -5,12 +5,11 @@ using UnityEngine.InputSystem;
 
 public class JogadorMovimento : MonoBehaviour
 {
-    [SerializeField] public UsoDash DashAtual; //É o objeto que contem o script do Dash
-    [SerializeField] public DadosDoDash DadosDash; //Armazena os valores do Dash, é usado para controle de cargas e interface, é um objeto Scriptavel
+    [SerializeField] UsoDash DashAtual; //É o objeto que contem o script do Dash
+    [SerializeField] DadosDoDash DadosDash; //Armazena os valores do Dash, é usado para controle de cargas e interface, é um objeto Scriptavel
     Vector3 MousePos;
     [SerializeField] bool isdashing; 
     [SerializeField] Vector3 direção;
-    [SerializeField] // Usado para ser decressido para fazer o controle de coll down do Dash
     float VelocidadeDeMovimento = 200;
 
     TrailRenderer TrailRenderer;
@@ -94,6 +93,11 @@ public class JogadorMovimento : MonoBehaviour
     {
         get { return DashAtual; }
         set { DashAtual = value; }
+    }
+    public DadosDoDash GetSetDashAtual
+    {
+        get { return DadosDash; }
+        set { DadosDash = value; }
     }
     public bool Isdashing
     {

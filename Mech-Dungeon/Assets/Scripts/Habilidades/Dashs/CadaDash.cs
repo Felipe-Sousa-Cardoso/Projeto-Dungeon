@@ -9,5 +9,7 @@ public class CadaDash : ScriptableObject
     public int QualidadeDeManufatura;
     public int AtributoEspecial;
     public float CD;
+    public string Nome;
+    public string Descricao;
 
 }

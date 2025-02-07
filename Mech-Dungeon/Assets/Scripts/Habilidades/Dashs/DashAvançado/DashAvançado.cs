@@ -6,6 +6,7 @@ public class DashAvançado : UsoDash
 {
     public override void updateDash(JogadorMovimento jog)
     {
+        #region Potencia
         potencia = 6;
         duração = 0.1f;
 
@@ -16,11 +17,13 @@ public class DashAvançado : UsoDash
         if (Valores.AtributoEspecial == 2)
         {
             potencia = 7;
+            if(Valores.QualidadeDeManufatura >= 1)
+            {
+                potencia = 9;
+            }
         }
-        if (Valores.AtributoEspecial == 2 && Valores.QualidadeDeManufatura >= 1)
-        {
-            potencia = 9;
-        }
+        #endregion
+        #region CD e Cargas
         float nCD = 0;
         int nCargas = 0;
 
@@ -42,8 +45,9 @@ public class DashAvançado : UsoDash
             break;
             case 3: nCargas = 1; break;
         }
-        
-        jog.DadosDash.CDdoDash = jog.DashAtual.Valores.CD+nCD;
-        jog.DadosDash.CargasDoDash = jog.DashAtual.Valores.Cargas+nCargas;
+
+        jog.GetSetDashAtual.CDdoDash = jog.GetSetDash.Valores.CD + nCD;
+        jog.GetSetDashAtual.CargasDoDash = jog.GetSetDash.Valores.Cargas + nCargas;
     }
+    #endregion
 }
