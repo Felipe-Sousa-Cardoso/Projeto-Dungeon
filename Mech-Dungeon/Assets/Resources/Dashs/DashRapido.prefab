@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1570109155701871643
+--- !u!1 &116648822194649352
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,40 +8,40 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2802588568538378340}
-  - component: {fileID: 859503588735258271}
+  - component: {fileID: 404983094292702379}
+  - component: {fileID: 8173393644713632875}
   m_Layer: 0
-  m_Name: "DashR\xE1pido"
+  m_Name: DashRapido
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2802588568538378340
+--- !u!4 &404983094292702379
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1570109155701871643}
+  m_GameObject: {fileID: 116648822194649352}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.3575056, y: -0.30419886, z: 1.0588886}
+  m_LocalPosition: {x: -4.5779076, y: -2.4739935, z: 5.4052157}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &859503588735258271
+--- !u!114 &8173393644713632875
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1570109155701871643}
+  m_GameObject: {fileID: 116648822194649352}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 870ca05e190caa145b9c392dc5ce83a2, type: 3}
+  m_Script: {fileID: 11500000, guid: 86f696ec82762b047b0d7e4f167a93f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Valores: {fileID: 11400000, guid: 2382885b87729e940ac82909cfb4015d, type: 2}
+  Valores: {fileID: 11400000, guid: bc4d1e5d89cfbc44085594f91037bf7c, type: 2}

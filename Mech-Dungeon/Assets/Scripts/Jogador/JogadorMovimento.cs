@@ -21,7 +21,8 @@ public class JogadorMovimento : MonoBehaviour
         TrailRenderer = rb.GetComponent<TrailRenderer>();
     }
     void Start()
-    {       
+    {
+        DashAtual = Resources.Load<UsoDash>("Dashs/DashBasico");
         UpdateDash();
         DadosDash.ContadorCDdash = DadosDash.CDdoDash;
     }
@@ -56,6 +57,7 @@ public class JogadorMovimento : MonoBehaviour
         {
 
             UpdateDash();
+            GerenciadorDeCartas.CriarCarta();
         }
 
     }
@@ -73,7 +75,7 @@ public class JogadorMovimento : MonoBehaviour
 
         
     }
-    void UpdateDash() //Trás os valores do script de cada dash para o objeto scriptavel
+    public void UpdateDash() //Trás os valores do script de cada dash para o objeto scriptavel
     {
         DashAtual.updateDash(this); 
         

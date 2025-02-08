@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: "Dashavan\xE7ado"
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 71436c6a4f1e0d940aea00390a314597, type: 3}
+  Nome: "DashAvan\xE7ado"
+  Descricao: Muito Bom
+  QualidadeDeManufatura: 0
+  AtributoEspecial: 0
   Cargas: 1
-  QualidadeDeManufatura: 2
-  AtributoEspecial: 1
   CD: 6
-  Nome: 
-  Descricao: 
