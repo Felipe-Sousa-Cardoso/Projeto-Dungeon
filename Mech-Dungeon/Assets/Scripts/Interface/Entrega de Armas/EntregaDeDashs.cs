@@ -1,14 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class EntregaDeDashs : MonoBehaviour
 {
     [SerializeField] UsoDash[] ListaDeDashs;
 
+    
+
     private void Start()
     {
-        ListaDeDashs = Resources.LoadAll<UsoDash>("Dashs");
+        ListaDeDashs = Resources.LoadAll<UsoDash>("Dashs"); //carrega todos os dashs da pasta para a lista
+        
         
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -16,11 +20,10 @@ public class EntregaDeDashs : MonoBehaviour
         EmbaralharArray(ListaDeDashs);
         if (collision.tag == "Jogador")
         {
-            collision.gameObject.GetComponent<JogadorMovimento>().GetSetDash = ListaDeDashs[0];
-            collision.gameObject.GetComponent<JogadorMovimento>().UpdateDash();
+            GerenciadorDeCartas.instancia.CriarCarta(ListaDeDashs[0].Valores);
         }
     }
-    void EmbaralharArray(UsoDash[] lista)
+    void EmbaralharArray(UsoDash[] lista) //embaralha a lista
     {
         for (int i = 0; i < lista.Length; i++)
         {
@@ -30,11 +33,7 @@ public class EntregaDeDashs : MonoBehaviour
         
     }
 
-    void EntregarDash()
-    {
-
-    }
-    
+   
 
    
     

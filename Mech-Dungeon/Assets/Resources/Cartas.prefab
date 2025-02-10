@@ -91,7 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280cd9c1e7401f34ab11fee5f9d30b14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  carta: {fileID: 11400000, guid: 2382885b87729e940ac82909cfb4015d, type: 2}
+  carta: {fileID: 0}
   Icone: {fileID: 8510323514194590175}
   borda: {fileID: 8322415334676647460}
   bordas:
