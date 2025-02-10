@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: Dashbasico
   m_EditorClassIdentifier: Assembly-CSharp::CadaDash
   sprite: {fileID: 21300000, guid: 0c31f97b946f57942a50ea08a34c6b94, type: 3}
-  Cargas: 1
+  Nome: Dash Basico
+  Descricao: Simples mas funciona
   QualidadeDeManufatura: 0
+  AtributoEspecial: 0
+  Cargas: 1
   CD: 4

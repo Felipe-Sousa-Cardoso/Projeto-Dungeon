@@ -20,7 +20,8 @@ public class EntregaDeDashs : MonoBehaviour
         EmbaralharArray(ListaDeDashs);
         if (collision.tag == "Jogador")
         {
-            GerenciadorDeCartas.instancia.CriarCarta(ListaDeDashs[0].Valores);
+            UsoDash[] Lista = { ListaDeDashs[0], ListaDeDashs[1] };
+            GerenciadorDeCartas.instancia.CriarCarta(collision.GetComponent<JogadorMovimento>(),Lista);
         }
     }
     void EmbaralharArray(UsoDash[] lista) //embaralha a lista

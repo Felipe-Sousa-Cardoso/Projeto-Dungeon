@@ -8,13 +8,14 @@ public class JogadorMovimento : MonoBehaviour
     [SerializeField] UsoDash DashAtual; //É o objeto que contem o script do Dash
     [SerializeField] DadosDoDash DadosDash; //Armazena os valores do Dash, é usado para controle de cargas e interface, é um objeto Scriptavel
     Vector3 MousePos;
-    [SerializeField] bool isdashing; 
-    [SerializeField] Vector3 direção;
+    bool isdashing; 
+    Vector3 direção;
     float VelocidadeDeMovimento = 200;
 
     TrailRenderer TrailRenderer;
-
     Rigidbody2D rb;
+
+    
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();   
