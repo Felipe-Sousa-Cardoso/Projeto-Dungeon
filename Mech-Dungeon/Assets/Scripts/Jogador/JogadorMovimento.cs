@@ -23,8 +23,7 @@ public class JogadorMovimento : MonoBehaviour
     }
     void Start()
     {
-        DashAtual = Resources.Load<UsoDash>("Dashs/DashBasico");
-        UpdateDash();
+        ResetDash();
         DadosDash.ContadorCDdash = DadosDash.CDdoDash;
     }
 
@@ -54,12 +53,6 @@ public class JogadorMovimento : MonoBehaviour
         #endregion
         ControleCDDash();
         GetMousePos();
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-
-            UpdateDash();
-        }
-
     }
     void ControleCDDash() //Faz as verificações do Cd e da quantidade de cargas
     {
@@ -74,6 +67,13 @@ public class JogadorMovimento : MonoBehaviour
         }
 
         
+    }
+    private void ResetDash() //Trás o Dash para a configuração inicial
+    {
+        DashAtual = Resources.Load<UsoDash>("Dashs/DashBasico");
+        DashAtual.Valores.QualidadeDeManufatura = 0;
+        DashAtual.Valores.AtributoEspecial = 0;
+        UpdateDash();
     }
     public void UpdateDash() //Trás os valores do script de cada dash para o objeto scriptavel
     {

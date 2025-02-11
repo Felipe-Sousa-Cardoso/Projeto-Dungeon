@@ -5,9 +5,7 @@ using UnityEngine.UI;
 
 public class Carta : MonoBehaviour
 {
-    public CadaCarta carta;
-    public int qualidade;
-    public int atributo;
+    
     [SerializeField] Image Icone;
     [SerializeField] Image CartaToda;
     ParticleSystem particle;
@@ -18,7 +16,9 @@ public class Carta : MonoBehaviour
 
     public JogadorMovimento jog;
     public UsoDash dah;
-
+    public CadaCarta carta;
+    public int qualidade;
+    public int atributo;
 
 
 
@@ -52,5 +52,6 @@ public class Carta : MonoBehaviour
         dah.Valores.QualidadeDeManufatura = qualidade;
         dah.Valores.AtributoEspecial = atributo;
         jog.UpdateDash();
+        GerenciadorDeCartas.instancia.Destruir();
     }
 }
