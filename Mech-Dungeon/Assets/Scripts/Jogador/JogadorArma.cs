@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ControlaraArma : MonoBehaviour
+public class JogadorArma : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
