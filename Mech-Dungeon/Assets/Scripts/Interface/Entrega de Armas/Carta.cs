@@ -22,10 +22,9 @@ public class Carta : MonoBehaviour
     public int qualidade;
     public int atributo;
 
-
-
-    private void Start()
-    {
+   
+    private void OnEnable()
+{
         particle = GetComponent<ParticleSystem>();
         CartaToda = GetComponent<Image>();
 
