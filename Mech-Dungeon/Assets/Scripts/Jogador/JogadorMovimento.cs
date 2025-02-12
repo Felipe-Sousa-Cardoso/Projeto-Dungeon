@@ -44,7 +44,7 @@ public class JogadorMovimento : MonoBehaviour
         #region Input
         if (ControladorDeInput.GetDashInput())
         {  
-            if (DadosDash.CargasDoDash>=1)
+            if (DadosDash.CargasDoDash>=1&&rb.velocity!= new Vector2(0,0))
             {
                 StartCoroutine(DashAtual.usodash(this));     
                 DadosDash.CargasDoDash --;
