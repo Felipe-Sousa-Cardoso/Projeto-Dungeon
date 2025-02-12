@@ -23,8 +23,8 @@ public class Carta : MonoBehaviour
     public int atributo;
 
 
-   
-    private void OnEnable()
+
+    private void Start()
     {
         particle = GetComponent<ParticleSystem>();
         CartaToda = GetComponent<Image>();
@@ -59,7 +59,7 @@ public class Carta : MonoBehaviour
         ParticleSystem.MainModule main = particle.main;
         switch (atributo)
         {
-            case 0: particle.Stop(); break;
+            case 0: particle.Pause(); break;
             case 1: main.startColor = Color.blue; CartaToda.color = new Color(0.722f, 1, 0.973f); IconeAtributo(0, 1); break;
             case 2: main.startColor = Color.red; CartaToda.color = new Color(1, 0.514f, 0.514f); IconeAtributo(1, 1); break;
             case 3: main.startColor = Color.yellow; CartaToda.color = new Color(0.984f, 1, 0.514f); IconeAtributo(2, 1); break;

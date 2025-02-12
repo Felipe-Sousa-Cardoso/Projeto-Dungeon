@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class JogadorMovimento : MonoBehaviour
 {
-    UsoDash DashAtual; //É o objeto que contem o script do Dash
+    [SerializeField] UsoDash DashAtual; //É o objeto que contem o script do Dash
     [SerializeField] DadosDoDash DadosDash; //Armazena os valores do Dash, é usado para controle de cargas e interface, é um objeto Scriptavel
     Vector3 MousePos;
     bool isdashing; 
