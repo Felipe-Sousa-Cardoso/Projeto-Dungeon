@@ -43,12 +43,12 @@
                 },
                 {
                     "name": "Tiro",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "36379cc5-c443-4f18-b85b-8968795fc677",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [

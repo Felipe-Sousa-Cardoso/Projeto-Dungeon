@@ -78,7 +78,7 @@ public class ControladorDeInput : MonoBehaviour
         dash = false;
         HabilidadeE = false;
         HabilidadeQ = false;
-        Tiro = false;
+        
         
     }
 #endregion

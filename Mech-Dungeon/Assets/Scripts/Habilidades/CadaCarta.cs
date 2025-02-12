@@ -8,5 +8,5 @@ public class CadaCarta : ScriptableObject
     public string Nome;
     public string Descricao;
     public int QualidadeDeManufatura;
-    public int AtributoEspecial;
+    
 }
