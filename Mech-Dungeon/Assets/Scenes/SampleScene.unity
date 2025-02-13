@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 90910089}
   - component: {fileID: 90910093}
   m_Layer: 0
-  m_Name: DarAArma
+  m_Name: DarODash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -655,7 +655,7 @@ GameObject:
   - component: {fileID: 506001457}
   - component: {fileID: 506001459}
   - component: {fileID: 506001458}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Dash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1071,7 +1071,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1110189848}
   - component: {fileID: 1110189849}
-  m_Layer: 0
+  - component: {fileID: 1110189850}
+  m_Layer: 6
   m_Name: Arma
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1145,6 +1146,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1110189850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1110189847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a45b600fb835ed419b0a451ff4e4aec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1134873829
 GameObject:
   m_ObjectHideFlags: 0
@@ -1482,7 +1495,8 @@ GameObject:
   - component: {fileID: 2014951225}
   - component: {fileID: 2014951226}
   - component: {fileID: 2014951227}
-  m_Layer: 0
+  - component: {fileID: 2014951228}
+  m_Layer: 6
   m_Name: Jogador
   m_TagString: Jogador
   m_Icon: {fileID: 0}
@@ -1747,6 +1761,21 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
+--- !u!114 &2014951228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2014951221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bf121bb4e7501e4aae6ca1e26cb4f0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  armaAtual: {fileID: 3012618137017073357, guid: e07c3cb18871b2c4583fa0ac013a0266, type: 3}
+  tiro: {fileID: 6000634916066881114, guid: 026be165efe09dc4c8d1b90d50ef1ecd, type: 3}
+  Arma: {fileID: 1110189848}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

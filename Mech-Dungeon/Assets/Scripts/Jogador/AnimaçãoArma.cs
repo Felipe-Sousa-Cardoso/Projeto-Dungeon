@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AnimaçãoDoDash : MonoBehaviour
+public class AnimaçãoArma : MonoBehaviour
 {
     SpriteRenderer spriteRenderer;
     void Start()
@@ -11,6 +11,6 @@ public class AnimaçãoDoDash : MonoBehaviour
     }
     void Update()
     {
-        spriteRenderer.sprite = GetComponentInParent<JogadorMovimento>().GetSetDash.Valores.sprite;
+        spriteRenderer.sprite = GetComponentInParent<JogadorArma>().ArmaAtual.Valores.sprite;
     }
 }
