@@ -1773,9 +1773,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bf121bb4e7501e4aae6ca1e26cb4f0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  armaAtual: {fileID: 3012618137017073357, guid: e07c3cb18871b2c4583fa0ac013a0266, type: 3}
+  armaAtual: {fileID: 3604461371520064037, guid: 322df303b83fd674eb3208044d198d9c, type: 3}
   tiro: {fileID: 6000634916066881114, guid: 026be165efe09dc4c8d1b90d50ef1ecd, type: 3}
   Arma: {fileID: 1110189848}
+  "muni\xE7\xF5es": 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
