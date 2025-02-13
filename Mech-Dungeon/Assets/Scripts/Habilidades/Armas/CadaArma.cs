@@ -8,6 +8,7 @@ public class CadaArma : CadaCarta
     public int Modulo;
     public float Cadencia;
     public float Alcance;
+    public int Velocidade;
     public float Precisão;
     public int Pente;
     public float Recarga;
