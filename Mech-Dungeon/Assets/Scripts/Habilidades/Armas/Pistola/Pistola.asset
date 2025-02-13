@@ -18,10 +18,10 @@ MonoBehaviour:
   QualidadeDeManufatura: 0
   "Modifica\xE7\xF5es": 
   Modulo: 1
-  Cadencia: 2
-  Alcance: 6
-  Velocidade: 10
-  "Precis\xE3o": 10
+  Cadencia: 1
+  Alcance: 1
+  Velocidade: 1
+  "Precis\xE3o": 1
   Pente: 6
   Recarga: 1
   Dano: 1

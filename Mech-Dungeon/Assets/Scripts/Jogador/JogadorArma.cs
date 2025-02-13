@@ -8,34 +8,65 @@ public class JogadorArma : MonoBehaviour
     [SerializeField] GameObject tiro; //Prefab da Munição
     [SerializeField] Transform Arma; //Trasform da arma, local onde é pra ser instanciado o tiro
     bool atirando;
-    int munições;
+
+    [SerializeField] int munições;
+    int maxmunições;
+    float recarga;
+    float cadencia;
     bool recarregando;
+
+    float modificarDano; //Modificador global de Dano
     #region Métodos de Acesso
     public UsoArma ArmaAtual
     {
         get { return armaAtual; }
         set { armaAtual = value; }
     }
+    public float ModificarDano
+    {
+        get { return modificarDano;}
+        set { modificarDano = value;}
+    }
+    public int Maxmunições
+    {
+        get { return maxmunições; }
+        set { maxmunições = value; }
+    }
+    public float Recarga
+    {
+        get {return recarga;} 
+        set { recarga = value; }
+    }
+    public float Cadencia
+    {
+        get { return cadencia;}
+        set { cadencia = value; }
+    }
     #endregion
 
     private void Start()
     {
-        munições = armaAtual.Valores.Pente;
+        modificarDano = 1;
+        
     }
     private void Update()
     {
-        
+        UpdateArma();
         if (ControladorDeInput.GetTiroInput() && !atirando && munições>0)
         {
-            StartCoroutine(CadaTiro(armaAtual.Valores.Cadencia));
+            StartCoroutine(CadaTiro(cadencia));
             munições--;
         }
         if (munições==0&&!recarregando)
         {
-            StartCoroutine(Recarga(armaAtual.Valores.Recarga));
+            StartCoroutine(Recaregar(Recarga));
         }
         
 
+    }
+    public void UpdateArma()
+    {
+        armaAtual.UpdateArma(this);
     }
     IEnumerator CadaTiro(float t)
     {
@@ -44,15 +75,11 @@ public class JogadorArma : MonoBehaviour
         yield return new WaitForSeconds(1/t);
         atirando = false;
     }
-    IEnumerator Recarga(float t)
+    IEnumerator Recaregar(float t)
     {        
         recarregando = true;
-        print("s");
         yield return new WaitForSeconds(t);
-        munições = armaAtual.Valores.Pente;
-        recarregando = false;
-       
+        munições = maxmunições;
+        recarregando = false;      
     }
-
-
 }

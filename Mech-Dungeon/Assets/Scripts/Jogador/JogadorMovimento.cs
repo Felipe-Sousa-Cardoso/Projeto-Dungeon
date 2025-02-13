@@ -77,8 +77,7 @@ public class JogadorMovimento : MonoBehaviour
     }
     public void UpdateDash() //Trás os valores do script de cada dash para o objeto scriptavel
     {
-        DashAtual.updateDash(this); 
-        
+        DashAtual.updateDash(this);      
     }
     void GetMousePos()
     {

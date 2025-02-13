@@ -22,12 +22,10 @@ public class Carta : MonoBehaviour
     public int qualidade;
     public int atributo;
 
-   
     private void OnEnable()
 {
         particle = GetComponent<ParticleSystem>();
         CartaToda = GetComponent<Image>();
-
         Borda();
         Atributod();
 
@@ -51,6 +49,7 @@ public class Carta : MonoBehaviour
             case 0: borda.color = new Vector4(1, 1, 1, 0); break;
             case 1: borda.sprite = bordas[0]; break;
             case 2: borda.sprite = bordas[1]; break;
+            case 3: borda.sprite = bordas[2]; break;
         }
     }
     void Atributod()
