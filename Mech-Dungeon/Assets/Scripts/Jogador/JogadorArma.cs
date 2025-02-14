@@ -5,7 +5,8 @@ using UnityEngine;
 public class JogadorArma : MonoBehaviour
 {
     [SerializeField] UsoArma[] armaAtual; //Objeto que contem o conjunto dos Scripts das armas atualmente equipadas
-    [SerializeField] int armaCount = 0;
+    [SerializeField] DadosDaArma interfaceArmas; //ObejtoScriptavel que faz a comunicação com a interface
+    int armaCount = 0; //controla qual arma está equipada
     [SerializeField] GameObject tiro; //Prefab da Munição
     [SerializeField] Transform Arma; //Trasform da arma, local onde é pra ser instanciado o tiro
     bool atirando;
@@ -61,6 +62,7 @@ public class JogadorArma : MonoBehaviour
         {
             StartCoroutine(CadaTiro(cadencia));
             armaAtual[armaCount].Valores.muniçãoAtual--;
+            interfaceArmas.MuniçãoAtual--;
         }
 
         if (ControladorDeInput.GetTrocaArmaInput()&&!trocaDeArmaCD)
@@ -79,12 +81,16 @@ public class JogadorArma : MonoBehaviour
 
         if (armaAtual[armaCount].Valores.muniçãoAtual ==0&&!recarregando)
         {
-            StartCoroutine(Recaregar(Recarga));
+            StartCoroutine(Recaregar(recarga));
         }
     }
     public void UpdateArma()
     {
         armaAtual[armaCount].UpdateArma(this);
+        interfaceArmas.sprite = armaAtual[armaCount].Valores.sprite;
+        interfaceArmas.MuniçãoAtual = armaAtual[armaCount].Valores.muniçãoAtual;
+        interfaceArmas.CDrecarga = recarga;
+        Arma.GetComponent<AnimaçãoArma>().AlterarArma(armaAtual[armaCount].Valores.sprite);
     }
     IEnumerator CadaTiro(float t)
     {
@@ -97,7 +103,7 @@ public class JogadorArma : MonoBehaviour
     {        
         recarregando = true;
         yield return new WaitForSeconds(t);
-        armaAtual[armaCount].Valores.muniçãoAtual = maxmunições;
+        armaAtual[armaCount].Valores.muniçãoAtual = interfaceArmas.MuniçãoAtual = maxmunições;
         recarregando = false;      
     }
     IEnumerator TrocaDeArma()

@@ -5,14 +5,12 @@ using UnityEngine;
 public class AnimaçãoArma : MonoBehaviour
 {
     SpriteRenderer spriteRenderer;
-    JogadorArma jog;
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        jog = GetComponentInParent<JogadorArma>();
     }
-    void FixedUpdate()
+    public void AlterarArma(Sprite arma)
     {
-        spriteRenderer.sprite = jog.ArmaAtual[jog.ArmaCount].Valores.sprite;
+        spriteRenderer.sprite = arma;
     }
 }

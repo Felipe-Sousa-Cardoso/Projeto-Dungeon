@@ -40,8 +40,6 @@ public class JogadorMovimento : MonoBehaviour
     }
     private void Update()
     { 
-        //Todos os inputs e seus efeitos
-        #region Input
         if (ControladorDeInput.GetDashInput())
         {  
             if (DadosDash.CargasDoDash>=1&&rb.velocity!= new Vector2(0,0))
@@ -50,7 +48,7 @@ public class JogadorMovimento : MonoBehaviour
                 DadosDash.CargasDoDash --;
             }               
         }
-        #endregion
+
         ControleCDDash();
         GetMousePos();
     }
@@ -65,8 +63,6 @@ public class JogadorMovimento : MonoBehaviour
             DadosDash.ContadorCDdash = DadosDash.CDdoDash;
             DadosDash.CargasDoDash++;
         }
-
-        
     }
     private void ResetDash() //Trás o Dash para a configuração inicial
     {
@@ -77,7 +73,8 @@ public class JogadorMovimento : MonoBehaviour
     }
     public void UpdateDash() //Trás os valores do script de cada dash para o objeto scriptavel
     {
-        DashAtual.updateDash(this);      
+        DashAtual.updateDash(this);
+        GetComponentInChildren<AnimaçãoDoDash>().SpriteDash(DashAtual.Valores.sprite);
     }
     void GetMousePos()
     {
