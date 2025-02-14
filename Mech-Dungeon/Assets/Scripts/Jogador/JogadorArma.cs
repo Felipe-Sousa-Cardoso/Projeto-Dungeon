@@ -4,20 +4,21 @@ using UnityEngine;
 
 public class JogadorArma : MonoBehaviour
 {
-    [SerializeField] UsoArma armaAtual; //Objeto que contem o Script da arma atualmente equipada
+    [SerializeField] UsoArma[] armaAtual; //Objeto que contem o conjunto dos Scripts das armas atualmente equipadas
+    [SerializeField] int armaCount = 0;
     [SerializeField] GameObject tiro; //Prefab da Munição
     [SerializeField] Transform Arma; //Trasform da arma, local onde é pra ser instanciado o tiro
     bool atirando;
 
-    [SerializeField] int munições;
     int maxmunições;
     float recarga;
     float cadencia;
     bool recarregando;
+    bool trocaDeArmaCD;
 
     float modificarDano; //Modificador global de Dano
     #region Métodos de Acesso
-    public UsoArma ArmaAtual
+    public UsoArma[] ArmaAtual
     {
         get { return armaAtual; }
         set { armaAtual = value; }
@@ -42,36 +43,53 @@ public class JogadorArma : MonoBehaviour
         get { return cadencia;}
         set { cadencia = value; }
     }
+    public int ArmaCount
+    {
+        get { return armaCount; }
+        set { armaCount = value; }
+    }
     #endregion
 
     private void Start()
     {
         modificarDano = 1;
-        
-    }
-    private void Update()
-    {
         UpdateArma();
-        if (ControladorDeInput.GetTiroInput() && !atirando && munições>0)
+    }
+    private void Update()      
+    {
+        if (ControladorDeInput.GetTiroInput() && !atirando && armaAtual[armaCount].Valores.muniçãoAtual >0)
         {
             StartCoroutine(CadaTiro(cadencia));
-            munições--;
+            armaAtual[armaCount].Valores.muniçãoAtual--;
         }
-        if (munições==0&&!recarregando)
+
+        if (ControladorDeInput.GetTrocaArmaInput()&&!trocaDeArmaCD)
+        {
+            StartCoroutine(TrocaDeArma());
+            if (armaCount < ArmaAtual.Length-1)
+            {
+                armaCount++;
+            }
+            else
+            {
+                armaCount = 0;
+            }
+            UpdateArma();
+        }
+
+        if (armaAtual[armaCount].Valores.muniçãoAtual ==0&&!recarregando)
         {
             StartCoroutine(Recaregar(Recarga));
         }
-        
-
     }
     public void UpdateArma()
     {
-        armaAtual.UpdateArma(this);
+        armaAtual[armaCount].UpdateArma(this);
     }
     IEnumerator CadaTiro(float t)
     {
         atirando = true;
-        armaAtual.atirar(tiro, Arma);
+        armaAtual[armaCount].atirar(tiro, Arma);
         yield return new WaitForSeconds(1/t);
         atirando = false;
     }
@@ -79,7 +97,13 @@ public class JogadorArma : MonoBehaviour
     {        
         recarregando = true;
         yield return new WaitForSeconds(t);
-        munições = maxmunições;
+        armaAtual[armaCount].Valores.muniçãoAtual = maxmunições;
         recarregando = false;      
+    }
+    IEnumerator TrocaDeArma()
+    {
+        trocaDeArmaCD = true;
+        yield return new WaitForSeconds(3); 
+        trocaDeArmaCD = false;
     }
 }

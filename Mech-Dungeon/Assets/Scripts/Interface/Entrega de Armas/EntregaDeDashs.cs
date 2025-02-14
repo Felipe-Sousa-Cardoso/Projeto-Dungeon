@@ -10,9 +10,7 @@ public class EntregaDeDashs : MonoBehaviour
 
     private void Start()
     {
-        ListaDeDashs = Resources.LoadAll<UsoDash>("Dashs"); //carrega todos os dashs da pasta para a lista
-        
-        
+        ListaDeDashs = Resources.LoadAll<UsoDash>("Dashs"); //carrega todos os dashs da pasta para a lista            
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

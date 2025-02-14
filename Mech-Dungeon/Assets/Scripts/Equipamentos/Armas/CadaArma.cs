@@ -12,6 +12,7 @@ public class CadaArma : CadaCarta
     public float Precisão;
     public int Pente;
     public float Recarga;
-    public float Dano;   
+    public float Dano;
+    public int muniçãoAtual;
     public int MuniçõesPorDisparo;
 }
