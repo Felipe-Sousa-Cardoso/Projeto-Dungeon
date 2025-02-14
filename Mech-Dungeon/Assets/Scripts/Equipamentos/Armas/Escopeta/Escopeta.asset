@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0cff75f8980c4404cb8224e6c10117f0, type: 3}
-  m_Name: Pistola
+  m_Name: Escopeta
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 20ae991eef5a5f249ae29c6c42ebf24a, type: 3}
-  Nome: Pistola
-  Descricao: Uma arma Simples
+  sprite: {fileID: 21300000, guid: bc7def07255751f459b09829f4087af7, type: 3}
+  Nome: Escopeta
+  Descricao: Muito dano a curta alcance
   QualidadeDeManufatura: 0
   "Modifica\xE7\xF5es": 
-  Modulo: 1
-  Cadencia: 2
-  Alcance: 6
-  Velocidade: 10
-  "Precis\xE3o": 10
-  Pente: 6
+  Modulo: 4
+  Cadencia: 1
+  Alcance: 1
+  Velocidade: 1
+  "Precis\xE3o": 1
+  Pente: 1
   Recarga: 1
   Dano: 1
   "Muni\xE7\xF5esPorDisparo": 1

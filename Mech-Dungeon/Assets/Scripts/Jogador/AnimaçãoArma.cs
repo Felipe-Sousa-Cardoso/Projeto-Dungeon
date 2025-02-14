@@ -9,8 +9,8 @@ public class AnimaçãoArma : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
-    void Update()
+    public void AlterarArma(Sprite arma)
     {
-        spriteRenderer.sprite = GetComponentInParent<JogadorArma>().ArmaAtual.Valores.sprite;
+        spriteRenderer.sprite = arma;
     }
 }

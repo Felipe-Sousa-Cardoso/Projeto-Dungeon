@@ -49,6 +49,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "TrocaDeArma",
+                    "type": "Button",
+                    "id": "b93f6327-9f92-4795-8f62-3db2e2a83d14",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -225,6 +234,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Tiro",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4bf2bf56-1ae7-4889-a921-922053ec8ae6",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TrocaDeArma",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

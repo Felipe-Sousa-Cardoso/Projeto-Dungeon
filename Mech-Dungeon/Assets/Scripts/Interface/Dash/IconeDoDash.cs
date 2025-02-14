@@ -8,6 +8,8 @@ public class IconeDoDash : MonoBehaviour
     [SerializeField] DadosDoDash DadosDash;
     [SerializeField] Image Cobertura; //Cobertura do icone do dash
     [SerializeField] Image[] IconesDeCarga;
+    int CargasAnteriores;
+    bool animaçãoDash;
 
     private void Update()
     {
@@ -16,29 +18,37 @@ public class IconeDoDash : MonoBehaviour
     }
     void TrasparenciaDacobertura()
     {
-        Cobertura.fillAmount = DadosDash.ContadorCDdash / DadosDash.CDdoDash;
-        if (DadosDash.CargasDoDash == 0)
+        if (DadosDash.CargasDoDash==0)
         {
+            Cobertura.fillAmount = DadosDash.ContadorCDdash / DadosDash.CDdoDash;          
             Cobertura.color = new Vector4(0.5f, 0.5f, 0.5f, 0.6f);
+            animaçãoDash = false;
         }
-        else
+        if(DadosDash.CargasDoDash != 0 && !animaçãoDash)
         {
+            animaçãoDash = true;
             Cobertura.color = new Vector4(0.5f, 0.5f, 0.5f, 0);
         }
+        
     } //Altera a transparencia da cobertura baseado na quantidade de cargas e temporizador de
     void QuantidadeDeCargas()
     {
-        for (int i = 0;i< IconesDeCarga.Length;i++)
+        if (DadosDash.CargasDoDash != CargasAnteriores)
         {
-            if (i <= DadosDash.CargasDoDash-1)
+            for (int i = 0; i < IconesDeCarga.Length; i++)
             {
-                IconesDeCarga[i].gameObject.SetActive(true);
+                if (i <= DadosDash.CargasDoDash - 1)
+                {
+                    IconesDeCarga[i].gameObject.SetActive(true);
+                }
+                else
+                {
+                    IconesDeCarga[i].gameObject.SetActive(false);
+                }
             }
-            else
-            {
-                IconesDeCarga[i].gameObject.SetActive(false);   
-            }
+            CargasAnteriores = DadosDash.CargasDoDash;
         }
+      
         
        
     }

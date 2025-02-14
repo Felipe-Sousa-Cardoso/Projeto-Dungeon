@@ -9,8 +9,8 @@ public class AnimaçãoDoDash : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
-    void Update()
+    public void SpriteDash(Sprite sprite)
     {
-        spriteRenderer.sprite = GetComponentInParent<JogadorMovimento>().GetSetDash.Valores.sprite;
+        spriteRenderer.sprite = sprite;
     }
 }
