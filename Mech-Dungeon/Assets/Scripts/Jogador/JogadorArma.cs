@@ -11,10 +11,12 @@ public class JogadorArma : MonoBehaviour
     [SerializeField] Transform Arma; //Trasform da arma, local onde é pra ser instanciado o tiro
     bool atirando;
 
+    Coroutine rotinaRecarga;
+
+
     int maxmunições;
     float recarga;
     float cadencia;
-    bool recarregando;
     bool trocaDeArmaCD;
 
     float modificarDano; //Modificador global de Dano
@@ -77,11 +79,14 @@ public class JogadorArma : MonoBehaviour
                 armaCount = 0;
             }
             UpdateArma();
+            StopCoroutine(rotinaRecarga);
+
+            interfaceArmas.recarregando = false;
         }
 
-        if (armaAtual[armaCount].Valores.muniçãoAtual ==0&&!recarregando)
+        if (armaAtual[armaCount].Valores.muniçãoAtual ==0&&!interfaceArmas.recarregando)
         {
-            StartCoroutine(Recaregarold(recarga));
+            rotinaRecarga = StartCoroutine(Recaregarold(recarga));
         }
     }
     public void UpdateArma()
@@ -100,11 +105,11 @@ public class JogadorArma : MonoBehaviour
         atirando = false;
     }
     IEnumerator Recaregarold(float t)
-    {        
-        recarregando = true;
+    {
+        interfaceArmas.recarregando = true;
         yield return new WaitForSeconds(t);
         armaAtual[armaCount].Valores.muniçãoAtual = interfaceArmas.MuniçãoAtual = maxmunições;
-        recarregando = false;      
+        interfaceArmas.recarregando = false;
     }
     IEnumerator TrocaDeArma()
     {

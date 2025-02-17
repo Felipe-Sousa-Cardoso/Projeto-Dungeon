@@ -10,9 +10,9 @@ public class IconeArma : MonoBehaviour
     [SerializeField] Image cobertura;
     Sprite armaAnterior;
     [SerializeField] float x; //Usado para controlar o FillAmont da cobertura
-    bool coberturaA; //Verifica quando a cobertura dve ser alterada
     [SerializeField] DadosDaArma daArma;
     int muniçãoAnterior;
+    [SerializeField] bool executando;
     
     
     void Update()
@@ -20,25 +20,27 @@ public class IconeArma : MonoBehaviour
         if (daArma.sprite!=armaAnterior)
         {
             arma.sprite = armaAnterior = daArma.sprite;
-            
+            x = 0;
         }
 
-        if (daArma.MuniçãoAtual == 0 && coberturaA)
-        {
-            cobertura.color = new Vector4(0.5f, 0.5f, 0.5f, 0.6f);
-            x += Time.deltaTime;
-            cobertura.fillAmount = x/daArma.CDrecarga;
-            if (x >= daArma.CDrecarga)
+        if (daArma.recarregando)
+        {         
+            if(x == 0)
             {
-                x = 0;
-                coberturaA = false;
-            }
+                cobertura.color = new Vector4(0.5f, 0.5f, 0.5f, 0.6f);
+                executando = false;
+                print("cob");
+            }        
+            x += Time.deltaTime;
+            cobertura.fillAmount = x / daArma.CDrecarga;
+           
         }
-        if (!coberturaA)
+        if (!daArma.recarregando && !executando)
         {
-            x = 0;
             cobertura.color = new Vector4(0.5f, 0.5f, 0.5f, 0);
-            coberturaA = true;
+            x = 0;
+            print("pronto");
+            executando = true;
         }
 
         if ((muniçãoAnterior != daArma.MuniçãoAtual) || daArma.MuniçãoAtual==0)

@@ -8,5 +8,5 @@ public class DadosDaArma : ScriptableObject
     public Sprite sprite;
     public float CDrecarga;
     public int MuniçãoAtual;
-    public float contadorDeRecarga; //Usado para controlar a recarga, sendo acressido com time.deltatime
+    public bool recarregando; //Usado para controlar a recarga, sendo acressido com time.deltatime
 }
