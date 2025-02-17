@@ -81,7 +81,7 @@ public class JogadorArma : MonoBehaviour
 
         if (armaAtual[armaCount].Valores.muniçãoAtual ==0&&!recarregando)
         {
-            StartCoroutine(Recaregar(recarga));
+            StartCoroutine(Recaregarold(recarga));
         }
     }
     public void UpdateArma()
@@ -99,7 +99,7 @@ public class JogadorArma : MonoBehaviour
         yield return new WaitForSeconds(1/t);
         atirando = false;
     }
-    IEnumerator Recaregar(float t)
+    IEnumerator Recaregarold(float t)
     {        
         recarregando = true;
         yield return new WaitForSeconds(t);

@@ -9,7 +9,7 @@ public class IconeArma : MonoBehaviour
     [SerializeField] RectTransform munições;
     [SerializeField] Image cobertura;
     Sprite armaAnterior;
-    float x; //Usado para controlar o FillAmont da cobertura
+    [SerializeField] float x; //Usado para controlar o FillAmont da cobertura
     bool coberturaA; //Verifica quando a cobertura dve ser alterada
     [SerializeField] DadosDaArma daArma;
     int muniçãoAnterior;
@@ -20,9 +20,10 @@ public class IconeArma : MonoBehaviour
         if (daArma.sprite!=armaAnterior)
         {
             arma.sprite = armaAnterior = daArma.sprite;
+            
         }
 
-        if (daArma.MuniçãoAtual == 0&&coberturaA)
+        if (daArma.MuniçãoAtual == 0 && coberturaA)
         {
             cobertura.color = new Vector4(0.5f, 0.5f, 0.5f, 0.6f);
             x += Time.deltaTime;
@@ -35,17 +36,16 @@ public class IconeArma : MonoBehaviour
         }
         if (!coberturaA)
         {
+            x = 0;
             cobertura.color = new Vector4(0.5f, 0.5f, 0.5f, 0);
             coberturaA = true;
         }
-        if (muniçãoAnterior != daArma.MuniçãoAtual)
+
+        if ((muniçãoAnterior != daArma.MuniçãoAtual) || daArma.MuniçãoAtual==0)
         {
             muniçãoAnterior = daArma.MuniçãoAtual;
             munições.sizeDelta = new Vector2 (13, muniçãoAnterior*8);
             munições.anchoredPosition = new Vector2 (920, -375+muniçãoAnterior*12);
-
         }
     }
-
-
 }
