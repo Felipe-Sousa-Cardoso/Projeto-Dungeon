@@ -19,13 +19,12 @@ public class UsoArma : MonoBehaviour
     {
         switch (Valores.QualidadeDeManufatura)
         {
-            case 1: break; 
-            case 2: break; 
-            case 3: break; 
-            case 4: break;
-
+            case 0: ModDanoQualidade = 1; break; 
+            case 1: ModDanoQualidade = 1.5f; Valores.Modificações.Capacity = 1;  break; 
+            case 2: ModDanoQualidade = 2; Valores.Modificações.Capacity = 2; break; 
+            case 3: ModDanoQualidade = 3; Valores.Modificações.Capacity = 3; break;
         }
-        print(Valores.Modificações.Length);
+        print(Valores.Modificações.Count);
     }
     public virtual void atirar(GameObject Tiro,Transform Arma)
     {

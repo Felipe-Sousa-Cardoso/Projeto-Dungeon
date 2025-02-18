@@ -4,7 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "cadaArma", menuName = "Equipamentos/Armas")]
 public class CadaArma : CadaCarta
 {
-    public int[] Modificações;
+    public List<CadaMod> Modificações = new List<CadaMod>();
     public int Modulo;
     public float Cadencia;
     public float Alcance;
