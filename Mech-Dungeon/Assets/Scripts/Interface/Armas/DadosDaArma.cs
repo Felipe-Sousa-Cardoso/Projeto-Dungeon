@@ -6,7 +6,8 @@ using UnityEngine;
 public class DadosDaArma : ScriptableObject
 {
     public Sprite sprite;
+    public Sprite proxmoSprite;
     public float CDrecarga;
     public int MuniçãoAtual;
-    public bool recarregando; //Usado para controlar a recarga, sendo acressido com time.deltatime
+    public bool recarregando; //verifica quando o jogador está recarregando
 }

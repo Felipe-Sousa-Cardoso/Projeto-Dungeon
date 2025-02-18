@@ -55,6 +55,7 @@ public class JogadorArma : MonoBehaviour
 
     private void Start()
     {
+        interfaceArmas.recarregando = false;
         modificarDano = 1;
         UpdateArma();
     }
@@ -79,7 +80,10 @@ public class JogadorArma : MonoBehaviour
                 armaCount = 0;
             }
             UpdateArma();
-            StopCoroutine(rotinaRecarga);
+            if (rotinaRecarga != null)
+            {
+                StopCoroutine(rotinaRecarga);
+            }
 
             interfaceArmas.recarregando = false;
         }
@@ -91,8 +95,22 @@ public class JogadorArma : MonoBehaviour
     }
     public void UpdateArma()
     {
+        armaAtual[armaCount].Qualidade();
         armaAtual[armaCount].UpdateArma(this);
         interfaceArmas.sprite = armaAtual[armaCount].Valores.sprite;
+        if (armaAtual.Length > 1)
+        {
+            if (armaCount < ArmaAtual.Length - 1)
+            {
+                interfaceArmas.proxmoSprite = armaAtual[armaCount + 1].Valores.sprite;
+            }
+            else
+            {
+                interfaceArmas.proxmoSprite = armaAtual[0].Valores.sprite;
+            }
+            
+        }
+        
         interfaceArmas.MuniçãoAtual = armaAtual[armaCount].Valores.muniçãoAtual;
         interfaceArmas.CDrecarga = recarga;
         Arma.GetComponent<AnimaçãoArma>().AlterarArma(armaAtual[armaCount].Valores.sprite);
@@ -114,7 +132,7 @@ public class JogadorArma : MonoBehaviour
     IEnumerator TrocaDeArma()
     {
         trocaDeArmaCD = true;
-        yield return new WaitForSeconds(3); 
+        yield return new WaitForSeconds(1); 
         trocaDeArmaCD = false;
     }
 }

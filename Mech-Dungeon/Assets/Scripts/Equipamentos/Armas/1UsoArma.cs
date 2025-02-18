@@ -15,6 +15,18 @@ public class UsoArma : MonoBehaviour
     protected float ModDanoQualidade;
     protected int MuniçõesPorDisparo;
 
+    public void Qualidade()
+    {
+        switch (Valores.QualidadeDeManufatura)
+        {
+            case 1: break; 
+            case 2: break; 
+            case 3: break; 
+            case 4: break;
+
+        }
+        print(Valores.Modificações.Length);
+    }
     public virtual void atirar(GameObject Tiro,Transform Arma)
     {
         for (int i = 0; i < MuniçõesPorDisparo; i++)
