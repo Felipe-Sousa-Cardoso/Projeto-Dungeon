@@ -11,10 +11,12 @@ public class JogadorArma : MonoBehaviour
     [SerializeField] Transform Arma; //Trasform da arma, local onde é pra ser instanciado o tiro
     bool atirando;
 
+    Coroutine rotinaRecarga;
+
+
     int maxmunições;
     float recarga;
     float cadencia;
-    bool recarregando;
     bool trocaDeArmaCD;
 
     float modificarDano; //Modificador global de Dano
@@ -53,6 +55,7 @@ public class JogadorArma : MonoBehaviour
 
     private void Start()
     {
+        interfaceArmas.recarregando = false;
         modificarDano = 1;
         UpdateArma();
     }
@@ -77,17 +80,37 @@ public class JogadorArma : MonoBehaviour
                 armaCount = 0;
             }
             UpdateArma();
+            if (rotinaRecarga != null)
+            {
+                StopCoroutine(rotinaRecarga);
+            }
+
+            interfaceArmas.recarregando = false;
         }
 
-        if (armaAtual[armaCount].Valores.muniçãoAtual ==0&&!recarregando)
+        if (armaAtual[armaCount].Valores.muniçãoAtual ==0&&!interfaceArmas.recarregando)
         {
-            StartCoroutine(Recaregar(recarga));
+            rotinaRecarga = StartCoroutine(Recaregarold(recarga));
         }
     }
     public void UpdateArma()
     {
+        armaAtual[armaCount].Qualidade();
         armaAtual[armaCount].UpdateArma(this);
         interfaceArmas.sprite = armaAtual[armaCount].Valores.sprite;
+        if (armaAtual.Length > 1)
+        {
+            if (armaCount < ArmaAtual.Length - 1)
+            {
+                interfaceArmas.proxmoSprite = armaAtual[armaCount + 1].Valores.sprite;
+            }
+            else
+            {
+                interfaceArmas.proxmoSprite = armaAtual[0].Valores.sprite;
+            }
+            
+        }
+        
         interfaceArmas.MuniçãoAtual = armaAtual[armaCount].Valores.muniçãoAtual;
         interfaceArmas.CDrecarga = recarga;
         Arma.GetComponent<AnimaçãoArma>().AlterarArma(armaAtual[armaCount].Valores.sprite);
@@ -99,17 +122,17 @@ public class JogadorArma : MonoBehaviour
         yield return new WaitForSeconds(1/t);
         atirando = false;
     }
-    IEnumerator Recaregar(float t)
-    {        
-        recarregando = true;
+    IEnumerator Recaregarold(float t)
+    {
+        interfaceArmas.recarregando = true;
         yield return new WaitForSeconds(t);
         armaAtual[armaCount].Valores.muniçãoAtual = interfaceArmas.MuniçãoAtual = maxmunições;
-        recarregando = false;      
+        interfaceArmas.recarregando = false;
     }
     IEnumerator TrocaDeArma()
     {
         trocaDeArmaCD = true;
-        yield return new WaitForSeconds(3); 
+        yield return new WaitForSeconds(1); 
         trocaDeArmaCD = false;
     }
 }

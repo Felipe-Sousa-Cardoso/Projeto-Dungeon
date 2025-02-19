@@ -53,7 +53,7 @@ using UnityEngine;
             filho.gameObject.SetActive(false);
         }
 
-    } //Controla as cartas, é chamado externamente
+    } //Apaga momentaneamente as cartas, é chamado externamente
     public void Destruir()
     {
         foreach (Transform filho in this.transform)
@@ -61,7 +61,7 @@ using UnityEngine;
             Destroy(filho.gameObject);
         }
         Resources.UnloadUnusedAssets();
-    }//Controla as cartas, é chamado externamente
+    }//destroi as cartas, é chamado externamente
     public void Aparecer()
     {
         foreach (Transform filho in this.transform)
@@ -69,5 +69,5 @@ using UnityEngine;
             filho.gameObject.SetActive(true);
         }
 
-    }//Controla as cartas, é chamado externamente
+    }//mostra as cartas as cartas, é chamado externamente
 }

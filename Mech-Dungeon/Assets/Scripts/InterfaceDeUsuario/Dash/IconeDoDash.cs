@@ -47,9 +47,6 @@ public class IconeDoDash : MonoBehaviour
                 }
             }
             CargasAnteriores = DadosDash.CargasDoDash;
-        }
-      
-        
-       
+        }      
     }
 }
