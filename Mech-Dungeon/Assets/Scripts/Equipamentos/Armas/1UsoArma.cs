@@ -40,6 +40,7 @@ public class UsoArma : MonoBehaviour
             tiro.transform.Rotate(new Vector3(0, 0, anguloFinal)); //Corrige a direção do sprite do tiro
 
             tiro.GetComponent<Rigidbody2D>().velocity = direcaoTiro * Velocidade; // Aplica a direção ao projétil
+            tiro.GetComponent<Munição>().Dano = Dano;
 
             Destroy(tiro, Alcance / Velocidade); //Usa valocidade para determinar o alcance
         }

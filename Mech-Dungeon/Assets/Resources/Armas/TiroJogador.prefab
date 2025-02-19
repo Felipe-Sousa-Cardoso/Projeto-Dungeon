@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7155170284638814632}
   - component: {fileID: 7819865982603460267}
   - component: {fileID: 8623684527332989713}
+  - component: {fileID: -2325638644318782029}
   m_Layer: 7
   m_Name: TiroJogador
   m_TagString: Untagged
@@ -112,3 +113,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-2325638644318782029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6000634916066881114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e0d107ccd15a414da885fe922a86824, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
