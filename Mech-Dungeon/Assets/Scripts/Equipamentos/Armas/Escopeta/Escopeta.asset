@@ -15,8 +15,8 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: bc7def07255751f459b09829f4087af7, type: 3}
   Nome: Escopeta
   Descricao: Muito dano a curta alcance
-  QualidadeDeManufatura: 0
-  "Modifica\xE7\xF5es": 
+  QualidadeDeManufatura: 1
+  "Modifica\xE7\xF5es": []
   Modulo: 4
   Cadencia: 1
   Alcance: 1
@@ -25,5 +25,5 @@ MonoBehaviour:
   Pente: 1
   Recarga: 1
   Dano: 1
-  "muni\xE7\xE3oAtual": 1
+  "muni\xE7\xE3oAtual": 3
   "Muni\xE7\xF5esPorDisparo": 1
