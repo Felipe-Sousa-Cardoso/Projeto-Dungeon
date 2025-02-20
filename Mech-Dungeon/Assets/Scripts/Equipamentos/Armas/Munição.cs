@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Danificavel;
 
 public class Munição : MonoBehaviour
 {
@@ -14,8 +15,13 @@ public class Munição : MonoBehaviour
     }
     #endregion
 
-    private void OnDestroy()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        print(dano);
+        IDanificavel objeto = collision.gameObject.GetComponent<IDanificavel>();
+        if (objeto != null)
+        {
+            objeto.Danificar(dano);
+        }
     }
+    
 }

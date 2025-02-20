@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Danificavel 
 {
-    public interface Danificar
+    public interface IDanificavel
     {
         void Danificar(float Quanto);
     }

@@ -24,7 +24,6 @@ public class UsoArma : MonoBehaviour
             case 2: ModDanoQualidade = 2; Valores.Modificações.Capacity = 2; break; 
             case 3: ModDanoQualidade = 3; Valores.Modificações.Capacity = 3; break;
         }
-        print(Valores.Modificações.Count);
     }
     public virtual void atirar(GameObject Tiro,Transform Arma)
     {

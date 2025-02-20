@@ -1,18 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Danificavel;
 
-public class BaseInimigos : MonoBehaviour
+public class BaseInimigos : MonoBehaviour, IDanificavel
 {
-    // Start is called before the first frame update
-    void Start()
+    float vida = 10;
+    public void Danificar(float Quanto)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+        vida -= Quanto;
+        if (vida <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }   
 }
